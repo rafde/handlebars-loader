@@ -1,7 +1,6 @@
 var loaderUtils = require("loader-utils");
 var handlebars = require("handlebars");
 var async = require("async");
-var util = require("util");
 var path = require("path");
 var assign = require("object-assign");
 var fastreplace = require('./lib/fastreplace');
@@ -252,8 +251,7 @@ module.exports = function(source) {
       var i = 0;
       (function tryExtension() {
         if (i >= extensions.length) {
-          var errorMsg = util.format("Partial '%s' not found", request);
-          return callback(new Error(errorMsg));
+          return partialCallback();
         }
         var extension = extensions[i++];
 
