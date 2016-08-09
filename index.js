@@ -1,7 +1,6 @@
 var loaderUtils = require("loader-utils");
 var handlebars = require("handlebars");
 var async = require("async");
-var util = require("util");
 var path = require("path");
 var fastreplace = require('./lib/fastreplace');
 var findNestedRequires = require('./lib/findNestedRequires');
@@ -238,8 +237,7 @@ module.exports = function(source) {
       var i = 0;
       (function tryExtension() {
         if (i >= extensions.length) {
-          var errorMsg = util.format("Partial '%s' not found", partial.substr(1));
-          return partialCallback(new Error(errorMsg));
+          return partialCallback();
         }
         var extension = extensions[i++];
 
